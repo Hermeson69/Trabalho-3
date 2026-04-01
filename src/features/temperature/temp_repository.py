@@ -1,23 +1,32 @@
 from sqlalchemy import select
 from .temp_model import LeituraModel
-from .temp_schema import LeituraSchema, LeituraResponseSchema
+from .temp_schema import LeituraCreateSchema, LeituraResponseSchema
 
 class LeituraRepository:
     """Repository for managing LeituraModel database operations"""
 
     @staticmethod
-    async def create_leitura(session, leitura_data: LeituraSchema) -> LeituraModel:
+    async def create_leitura(session, leitura_data: LeituraCreateSchema) -> LeituraModel:
         """Create a new leitura record in the database"""
         nova_leitura = LeituraModel(
             sensor_id=leitura_data.sensor_id,
             temperatura=leitura_data.temperatura,
-            status_logico=leitura_data.status_logico,
-            timestamp=leitura_data.timestamp
         )
         session.add(nova_leitura)
         await session.commit()
         await session.refresh(nova_leitura)
         return nova_leitura
+    
+    @staticmethod
+    async def logic_temp_response(leitura: LeituraModel) -> LeituraResponseSchema:
+        """Convert a LeituraModel instance to a LeituraResponseSchema"""
+        if(leitura.temperatura < 25):
+            leitura.status_logico = "Normal"
+        elif(leitura.temperatura >= 25 and leitura.temperatura < 30):
+            leitura.status_logico = "Alerta"
+        else:
+            leitura.status_logico = "Perigo"
+        return LeituraResponseSchema.from_orm(leitura)
 
     @staticmethod
     async def get_leitura_by_id(session, leitura_id: str) -> LeituraModel | None:
@@ -31,4 +40,4 @@ class LeituraRepository:
         result = await session.execute(select(LeituraModel))
         return result.scalars().all()
 
-    
+        

@@ -14,8 +14,6 @@ class LeituraModel(BaseModel):
     id = Column(String, primary_key=True, default=IDGenerator.generate_id)
     sensor_id = Column(String, nullable=False)
     temperatura = Column(Float, nullable=False)
-    status_logico = Column(String, nullable=False)
+    status_logico = Column(String, nullable=True, default="Normal")
     timestamp = Column(DateTime, nullable=False, default=datetime.utcnow)
     created_at = Column(DateTime, nullable=False, default=datetime.utcnow)
-
-

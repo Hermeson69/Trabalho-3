@@ -1,6 +1,8 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
+from src.features.temperature.temp_router import router as temp_router
+
 app = FastAPI(
     title="Trabalho 3 API",
     description="API for sensor readings",
@@ -16,6 +18,9 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# Include routers
+app.include_router(temp_router)
+
 
 @app.get("/health")
 async def health_check():
@@ -23,8 +28,7 @@ async def health_check():
     return {"status": "ok"}
 
 
-@app.post("/leitura")
-async def create_leitura(leitura: dict):
-    """Create a new sensor reading"""
-    # Here you would normally save the leitura to the database
-    return {"message": "Leitura created successfully", "leitura": leitura}
+@app.get("/")
+async def root():
+    """Root endpoint"""
+    return {"message": "Welcome to Trabalho 3 API"}

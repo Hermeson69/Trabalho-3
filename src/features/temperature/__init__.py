@@ -1,4 +1,5 @@
 from .temp_model import LeituraModel
-from .temp_schema import LeituraSchema, LeituraResponseSchema
+from .temp_schema import LeituraCreateSchema, LeituraResponseSchema
+from .temp_repository import LeituraRepository
 
-__all__ = ["LeituraModel", "LeituraSchema", "LeituraResponseSchema"]
+__all__ = ["LeituraModel", "LeituraCreateSchema", "LeituraResponseSchema", "LeituraRepository"]
