@@ -4,8 +4,10 @@ from pydantic import BaseModel
 
 class LeituraCreateSchema(BaseModel):
     """Schema for creating a new sensor reading"""
+    id: str
     sensor_id: str
     temperatura: float
+    timestamp: datetime
 
 
 class LeituraResponseSchema(BaseModel):
