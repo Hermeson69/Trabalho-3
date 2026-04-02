@@ -4,7 +4,7 @@ from pydantic_settings import BaseSettings
 class Settings(BaseSettings):
     """Application settings"""
     
-    database_url: str = "sqlite+aiosqlite:///./db/db.sqlite3"
+    database_url: str = "sqlite+aiosqlite:///./src//db/db.sqlite3"
     
     class Config:
         env_file = ".env"
