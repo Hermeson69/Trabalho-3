@@ -26,12 +26,12 @@ class LeituraRepository:
     @staticmethod
     async def logic_temp_response(leitura: LeituraModel) -> LeituraResponseSchema:
         """Convert a LeituraModel instance to a LeituraResponseSchema"""
-        if(leitura.temperatura < 25):
-            leitura.status_logico = "Normal"
-        elif(leitura.temperatura >= 25 and leitura.temperatura < 30):
+        if(leitura.temperatura >= 15):
+            leitura.status_logico = "Critico"
+        elif(leitura.temperatura >= 10 and leitura.temperatura < 15):
             leitura.status_logico = "Alerta"
         else:
-            leitura.status_logico = "Perigo"
+            leitura.status_logico = "Normal"
         return LeituraResponseSchema.from_orm(leitura)
 
     @staticmethod
