@@ -204,3 +204,4 @@ python3 main.py
 
 ### Falha no Servidor
 ![O servidor não está ativado](images/falha_servidor.png)
+***O servidor não está ativado
