@@ -196,5 +196,8 @@ python3 main.py
 ### Temperatura Normal
 ![Temperatura Normal](images/temperatura_normal.png)
 
-### Cliente enviando leituras
-![Cliente enviando leituras](images/cliente.png)
+### Temperatura em Alerta
+![Temperatura em Alerta](images/temperatura_alerta.png)
+
+### Temperatura Critica
+![Temperatura Critica](images/temperatura_critica.png)
