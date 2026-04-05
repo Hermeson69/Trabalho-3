@@ -201,3 +201,6 @@ python3 main.py
 
 ### Temperatura Critica
 ![Temperatura Critica](images/temperatura_critica.png)
+
+### Falha no Servidor
+![O servidor não está ativado](images/falha_servidor.png)
