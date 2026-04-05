@@ -1,4 +1,4 @@
-# Servidor - Sistema de Monitoramento de Temperatura
+# Servidor - Sistema de Monitoramento de Temperatura 📊
 
 Camada de servidor do sistema distribuído de monitoramento de sensores.  
 API REST assíncrona em **FastAPI**, com persistência em **SQLite** via SQLAlchemy assíncrono.
@@ -204,4 +204,4 @@ python3 main.py
 
 ### Falha no Servidor
 ![O servidor não está ativado](images/falha_servidor.png)
-***O servidor não está ativado
+O servidor não está ativado
